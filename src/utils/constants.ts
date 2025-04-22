@@ -14,3 +14,7 @@ export const LINKS = {
     title: "Page not found",
   },
 };
+
+export const PASSWORD_EXAMPLE = import.meta.env.VITE_CTP_PASSWORD_EXAMPLE;
+
+export const EMAIL_EXAMPLE = import.meta.env.VITE_CTP_EMAIL_EXAMPLE;
