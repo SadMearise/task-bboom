@@ -1,4 +1,4 @@
 import Admin from "./Admin";
-import { LoginPage } from "./LoginPage";
+import { SignInPage } from "./SignInPage";
 
-export { Admin, LoginPage };
+export { Admin, SignInPage };

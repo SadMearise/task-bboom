@@ -9,7 +9,7 @@ type Props = {
 
 const ProtectedRoute: FC<PropsWithChildren<Props>> = ({
   isAllowed,
-  redirectPath = LINKS.login.route,
+  redirectPath = LINKS.signin.route,
   children,
 }) => {
   if (!isAllowed) {

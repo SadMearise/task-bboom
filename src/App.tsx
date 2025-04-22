@@ -1,22 +1,25 @@
 import styles from "./App.module.css";
 import { Route, Routes } from "react-router";
 import { LINKS } from "./utils/constants";
-import { Admin, LoginPage } from "./pages";
+import { Admin, SignInPage } from "./pages";
 import { ProtectedRoute } from "./components";
+import useAuth from "./utils/hooks/useAuth";
 
 const App = () => {
+  const { isAuth } = useAuth();
+
   return (
     <div className={styles.wrapper}>
       <Routes>
         <Route
-          element={<LoginPage />}
-          path={LINKS.login.route}
+          element={<SignInPage />}
+          path={LINKS.signin.route}
         />
         <Route
           element={
             <ProtectedRoute
-              isAllowed
-              redirectPath={LINKS.login.route}
+              isAllowed={isAuth}
+              redirectPath={LINKS.signin.route}
             />
           }
         >

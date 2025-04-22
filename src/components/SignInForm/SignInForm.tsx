@@ -8,12 +8,17 @@ import {
   SignInFormError,
   signInFormSchema,
 } from "../../schemas/signInFormSchema";
+import useAuth from "../../utils/hooks/useAuth";
+import { useNavigate } from "react-router";
+import { LINKS } from "../../utils/constants";
 
 type Props = {
   className?: string;
 };
 
 const SignInForm: FC<Props> = ({ className }) => {
+  const navigate = useNavigate();
+  const { signIn, error: authError } = useAuth();
   const [formData, setFormData] = useState<SignInFormValues>({
     email: "",
     password: "",
@@ -48,6 +53,14 @@ const SignInForm: FC<Props> = ({ className }) => {
 
       return;
     }
+
+    const isAuth = signIn(formData.email, formData.password);
+
+    if (!isAuth) {
+      setErrors({ _errors: [authError] });
+    }
+
+    navigate(`/${LINKS.admin.route}`);
   };
 
   return (

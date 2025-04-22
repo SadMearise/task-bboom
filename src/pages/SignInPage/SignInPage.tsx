@@ -1,7 +1,7 @@
-import styles from "./LoginPage.module.css";
+import styles from "./SignInPage.module.css";
 import { SignInForm } from "../../components";
 
-const LoginPage = () => {
+const SignInPage = () => {
   return (
     <div className={styles.wrapper}>
       <SignInForm />
@@ -9,4 +9,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignInPage;
