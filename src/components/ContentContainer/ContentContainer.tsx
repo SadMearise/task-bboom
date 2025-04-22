@@ -7,7 +7,7 @@ type Props = {
 };
 
 const ContentContainer: FC<PropsWithChildren<Props>> = ({ className, children }) => {
-  return <div className={clsx(className, styles["content-container"])}>{children}</div>;
+  return <div className={clsx(styles["content-container"], className)}>{children}</div>;
 };
 
 export default ContentContainer;
