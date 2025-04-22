@@ -112,7 +112,6 @@ export default tseslint.config(
       "react/prop-types": "off",
       "react/state-in-constructor": "off",
       "react/jsx-filename-extension": "off",
-      "react/jsx-max-depth": ["error", { max: 1 }],
       "react/no-array-index-key": "off",
       "react/jsx-props-no-spreading": "off",
       "react/require-default-props": "off",
