@@ -34,7 +34,6 @@ export default tseslint.config(
         ...globals.browser,
         ...globals.es2021,
       },
-      parserOptions: { project: ["./tsconfig.json"] },
     },
   },
   { ignores: ["node_modules", "dist"] },
