@@ -18,7 +18,7 @@ type Props = {
 
 const SignInForm: FC<Props> = ({ className }) => {
   const navigate = useNavigate();
-  const { signIn, error: authError } = useAuth();
+  const { signIn } = useAuth();
   const [formData, setFormData] = useState<SignInFormValues>({
     email: "",
     password: "",
@@ -54,13 +54,15 @@ const SignInForm: FC<Props> = ({ className }) => {
       return;
     }
 
-    const isAuth = signIn(formData.email, formData.password);
+    const result = signIn(formData.email, formData.password);
 
-    if (!isAuth) {
-      setErrors({ _errors: [authError] });
+    if (result.ok) {
+      navigate(`/${LINKS.admin.route}`);
+    } else if (result.error) {
+      setErrors({ _errors: [result.error] });
+
+      return;
     }
-
-    navigate(`/${LINKS.admin.route}`);
   };
 
   return (
@@ -88,7 +90,9 @@ const SignInForm: FC<Props> = ({ className }) => {
             value={formData.password}
             onChange={handleChange("password")}
           />
-          {errors?._errors && <div className={errorStyles.error}>{errors?._errors.join(", ")}</div>}
+          {errors?._errors && errors._errors.length > 0 && (
+            <div className={errorStyles.error}>{errors._errors.join(", ")}</div>
+          )}
           <Button
             type="submit"
             variant="contained"

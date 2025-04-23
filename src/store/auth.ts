@@ -1,11 +1,12 @@
 import { create } from "zustand";
 import { EMAIL_EXAMPLE, PASSWORD_EXAMPLE } from "../utils/constants";
 
+type SignInResult = { ok: true } | { ok: false; error: string };
+
 export interface AuthState {
   isAuth: boolean;
-  signIn: (email: string, password: string) => boolean;
+  signIn: (email: string, password: string) => SignInResult;
   signOut: () => void;
-  error: string;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -15,11 +16,14 @@ export const useAuthStore = create<AuthState>((set) => ({
 
     if (isSignInSuccessful) {
       set({ isAuth: true });
-    } else {
-      set({ error: "Account not found" });
+
+      return { ok: true };
     }
 
-    return isSignInSuccessful;
+    return {
+      ok: false,
+      error: "Account not found",
+    };
   },
   signOut: () => set({ isAuth: false }),
   error: "",
