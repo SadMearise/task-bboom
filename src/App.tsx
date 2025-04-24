@@ -12,7 +12,7 @@ const App = () => {
     <div className={styles.wrapper}>
       <Routes>
         <Route
-          path="/"
+          path={LINKS.home.route}
           element={
             <Navigate
               to={LINKS.signin.route}
