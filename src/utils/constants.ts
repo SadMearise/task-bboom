@@ -4,6 +4,9 @@ import { AccessLevel } from "../types/enums";
 export const PROJECT_NAME = "task-bboom";
 
 export const LINKS = {
+  home: {
+    route: "/",
+  },
   signin: {
     route: "signin",
   },

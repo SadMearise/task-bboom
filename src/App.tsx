@@ -1,5 +1,5 @@
 import styles from "./App.module.css";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import { LINKS } from "./utils/constants";
 import { AdminPage, ErrorPage, SignInPage } from "./pages";
 import { ProtectedRoute } from "./components";
@@ -11,6 +11,15 @@ const App = () => {
   return (
     <div className={styles.wrapper}>
       <Routes>
+        <Route
+          path="/"
+          element={
+            <Navigate
+              to={LINKS.signin.route}
+              replace
+            />
+          }
+        />
         <Route
           element={<SignInPage />}
           path={LINKS.signin.route}
