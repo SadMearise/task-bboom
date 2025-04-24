@@ -7,7 +7,6 @@ import useAuth from "./utils/hooks/useAuth";
 
 const App = () => {
   const { isAuth } = useAuth();
-  throw new Error("This is a test error!");
 
   return (
     <div className={styles.wrapper}>
