@@ -22,9 +22,9 @@ export const LINKS = {
   },
 };
 
-export const PASSWORD_EXAMPLE = "example@example.com";
+export const PASSWORD_EXAMPLE = "12345678";
 
-export const EMAIL_EXAMPLE = "12345678";
+export const EMAIL_EXAMPLE = "example@example.com";
 
 export const INITIAL_USERS: User[] = [
   {
