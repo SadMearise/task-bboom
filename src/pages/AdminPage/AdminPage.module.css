@@ -1,0 +1,28 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  max-width: 90%;
+  padding: 50px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.col {
+  height: fit-content;
+}
+
+.col:first-child {
+  flex: 1 1 70%;
+  overflow-x: auto;
+}
+
+.col:last-child {
+  flex: 0 0 30%;
+  max-height: 400px;
+  overflow-y: auto;
+}

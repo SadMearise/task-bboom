@@ -1,5 +1,23 @@
 import ProtectedRoute from "./ProtectedRoute";
 import { SignInForm } from "./SignInForm";
 import { ContentContainer } from "./ContentContainer";
+import { Section } from "./Section";
+import { AuditLogs } from "./AuditLogs";
+import AccessLevelSelector from "./AccessLevelSelector";
+import RoleEditor from "./RoleEditor";
+import DeleteButton from "./DeleteButton";
+import { Log } from "./Log";
 
-export { ProtectedRoute, SignInForm, ContentContainer };
+export {
+  ProtectedRoute,
+  SignInForm,
+  ContentContainer,
+  Section,
+  AuditLogs,
+  AccessLevelSelector,
+  RoleEditor,
+  DeleteButton,
+  Log,
+};
+
+export * from "./AccessControlTable";

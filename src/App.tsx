@@ -1,7 +1,7 @@
 import styles from "./App.module.css";
 import { Route, Routes } from "react-router";
 import { LINKS } from "./utils/constants";
-import { Admin, SignInPage } from "./pages";
+import { AdminPage, SignInPage } from "./pages";
 import { ProtectedRoute } from "./components";
 import useAuth from "./utils/hooks/useAuth";
 
@@ -24,7 +24,7 @@ const App = () => {
           }
         >
           <Route
-            element={<Admin />}
+            element={<AdminPage />}
             path={LINKS.admin.route}
           />
         </Route>
