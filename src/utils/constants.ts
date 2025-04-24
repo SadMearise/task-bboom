@@ -18,9 +18,9 @@ export const LINKS = {
   },
 };
 
-export const PASSWORD_EXAMPLE = import.meta.env.VITE_CTP_PASSWORD_EXAMPLE;
+export const PASSWORD_EXAMPLE = "example@example.com";
 
-export const EMAIL_EXAMPLE = import.meta.env.VITE_CTP_EMAIL_EXAMPLE;
+export const EMAIL_EXAMPLE = "12345678";
 
 export const INITIAL_USERS: User[] = [
   {
