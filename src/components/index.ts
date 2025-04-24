@@ -7,6 +7,8 @@ import AccessLevelSelector from "./AccessLevelSelector";
 import RoleEditor from "./RoleEditor";
 import DeleteButton from "./DeleteButton";
 import { Log } from "./Log";
+import { FormError } from "./FormError";
+import FormInput from "./FormInput";
 
 export {
   ProtectedRoute,
@@ -18,6 +20,8 @@ export {
   RoleEditor,
   DeleteButton,
   Log,
+  FormError,
+  FormInput,
 };
 
 export * from "./AccessControlTable";

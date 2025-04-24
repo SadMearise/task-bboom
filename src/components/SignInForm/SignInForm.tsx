@@ -1,7 +1,6 @@
-import { Button, TextField } from "@mui/material";
-import { FC, useState } from "react";
+import { Button } from "@mui/material";
+import { FC, useCallback, useState } from "react";
 import styles from "./SignInForm.module.css";
-import errorStyles from "../../styles/Error.module.css";
 import { ContentContainer } from "../ContentContainer";
 import {
   SignInFormValues,
@@ -11,18 +10,22 @@ import {
 import useAuth from "../../utils/hooks/useAuth";
 import { useNavigate } from "react-router";
 import { LINKS } from "../../utils/constants";
+import { FormError } from "../FormError";
+import FormInput from "../FormInput";
 
 type Props = {
   className?: string;
 };
 
+const initialFormData = {
+  email: "",
+  password: "",
+};
+
 const SignInForm: FC<Props> = ({ className }) => {
   const navigate = useNavigate();
   const { signIn } = useAuth();
-  const [formData, setFormData] = useState<SignInFormValues>({
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState<SignInFormValues>(initialFormData);
   const [errors, setErrors] = useState<SignInFormError>();
 
   const validate = () => {
@@ -35,13 +38,9 @@ const SignInForm: FC<Props> = ({ className }) => {
     return result.error.format();
   };
 
-  const handleChange =
-    (field: keyof SignInFormValues) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setFormData((prevData) => ({
-        ...prevData,
-        [field]: event.target.value,
-      }));
-    };
+  const handleChange = useCallback((field: keyof SignInFormValues, value: string) => {
+    setFormData((prevData) => ({ ...prevData, [field]: value }));
+  }, []);
 
   const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -73,25 +72,25 @@ const SignInForm: FC<Props> = ({ className }) => {
           className={styles.form}
           onSubmit={handleSubmit}
         >
-          <TextField
+          <FormInput
             error={!!errors?.email}
             label="Email"
-            variant="outlined"
             helperText={errors?.email?._errors.join(", ")}
             value={formData.email}
-            onChange={handleChange("email")}
+            onChange={handleChange}
+            field="email"
           />
-          <TextField
+          <FormInput
             error={!!errors?.password}
             label="Password"
             type="password"
-            autoComplete="current-password"
             helperText={errors?.password?._errors.join(", ")}
             value={formData.password}
-            onChange={handleChange("password")}
+            onChange={handleChange}
+            field="password"
           />
           {errors?._errors && errors._errors.length > 0 && (
-            <div className={errorStyles.error}>{errors._errors.join(", ")}</div>
+            <FormError message={errors._errors.join(", ")} />
           )}
           <Button
             type="submit"
