@@ -3,6 +3,10 @@ import { AccessLevel } from "../types/enums";
 
 export const PROJECT_NAME = "task-bboom";
 
+const isProd = import.meta.env.MODE === "production";
+
+export const BASENAME = isProd ? `/${PROJECT_NAME}` : "/";
+
 export const LINKS = {
   home: {
     route: "/",
