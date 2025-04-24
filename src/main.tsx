@@ -9,7 +9,7 @@ import "./globals.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/task-bboom">
       <ErrorBoundary>
         <App />
       </ErrorBoundary>
