@@ -9,6 +9,7 @@ import DeleteButton from "./DeleteButton";
 import { Log } from "./Log";
 import { FormError } from "./FormError";
 import FormInput from "./FormInput";
+import ErrorBoundary from "./ErrorBoundary";
 
 export {
   ProtectedRoute,
@@ -22,6 +23,7 @@ export {
   Log,
   FormError,
   FormInput,
+  ErrorBoundary,
 };
 
 export * from "./AccessControlTable";

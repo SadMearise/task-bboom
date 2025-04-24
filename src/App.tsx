@@ -1,12 +1,13 @@
 import styles from "./App.module.css";
 import { Route, Routes } from "react-router";
 import { LINKS } from "./utils/constants";
-import { AdminPage, SignInPage } from "./pages";
+import { AdminPage, ErrorPage, SignInPage } from "./pages";
 import { ProtectedRoute } from "./components";
 import useAuth from "./utils/hooks/useAuth";
 
 const App = () => {
   const { isAuth } = useAuth();
+  throw new Error("This is a test error!");
 
   return (
     <div className={styles.wrapper}>
@@ -29,8 +30,8 @@ const App = () => {
           />
         </Route>
         <Route
+          element={<ErrorPage />}
           path={LINKS.error.route}
-          element={<p>There's nothing here: 404!</p>}
         />
       </Routes>
     </div>
